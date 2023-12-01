@@ -10,25 +10,25 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $confirm_password = $_POST['confirm password'];
 
-$ok = true;
+$requiredField = true;
 require './inc/header.php';
 if (empty($fname)) {
 	echo '<p>First name is needed</p>';
-	$ok = false;
+	$requiredField = false;
 }
 if (empty($lname)) {
 	echo '<p>Last name is needed</p>';
-	$ok = false;
+	$requiredField = false;
 }
 if (empty($phone)) {
 	echo '<p>phone number is needed</p>';
-	$ok = false;
+	$requiredField = false;
 }
 if ((empty($password)) || ($password != $confirm)) {
-	echo '<p> Password is invalid</P>';
+	echo '<p> incorrect password</P>';
 }
 if ((empty($confirm_password)) || ($Confirm_password != $confirm)) {
-	echo '<p> Password is invalid</P>';
+	echo '<p> incorrect confirm password</P>';
 }
 
 

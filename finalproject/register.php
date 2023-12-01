@@ -51,3 +51,4 @@
         </div>
     </section>
 </body>
+<?php include './added/footer.php'?>

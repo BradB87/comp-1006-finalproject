@@ -1,12 +1,3 @@
-
-<?php include 'database.php';
-$customerObj = new database();
-if (isset($get['deletedId']) && !empty($_GET['deleted'])) {
-    $deletedId = $_GET['deleteId'];
-    $customerObj->deleteRecord($deletedId);
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -85,28 +76,26 @@ if (isset($get['deletedId']) && !empty($_GET['deleted'])) {
 </body>
 <?php require('./include/footer.php') ?>
 <?php
-//msg  alert when imputed, updated, deleted
 
-///invalid warnings for CRUD///
-if (isset($_GET['msg1']) == "insert") {
-    echo " <div class='alert alert-success alert-dismissible'>
-    <button type= 'button' class= 'close' data-dismiss='alert'>y</button>
-    h3>Successfully inserted into database<h3>
-    </div>";
-}
-//update
-if (isset($_GET['msg2']) == "update") {
-    echo " <div class='alert alert-success alert-dismissible'>
-    <button type= 'button' class= 'close' data-dismiss='alert'>y</button>
-    h3>Successfully updated database<h3>
-    </div>";
-}
-if (isset($_GET['msg3']) == "delete") {
-    echo " <div class='alert alert-success alert-dismissible'>
-    <button type= 'button' class= 'close' data-dismiss='alert'>y</button>
-    h3>Successfully deleted from database<h3>
-    </div>";
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
 
 </html>

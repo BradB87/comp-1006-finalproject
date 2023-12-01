@@ -19,45 +19,79 @@ class database
         }
         return $this->connection;
     }
-    // Create data 
-    public function insertData($POST)
-    {
-        $fname = $this->connection->real_escape_string($_POST['fname']);
-        $lname = $this->connection->real_escape_string($_POST['lname']);
-        $phone = $this->connection->real_escape_string($_POST['phone']);
-        $email = $this->connection->real_escape_string($_POST['email']);
-        $password = $this->connection->real_escape_string($_POST['password']);
+} 
+//update crud
 
-        $query = "INSERT INTO mainContent(fname,lname,phone,email,password) values('$fname','$lname','$phone','$email','$password)";
-    }
+  if(isset($_POST['submit'])) {
+
+    $fname = $_POST['fname'];
+
+    $lname = $_POST['lname'];
+
+    $email = $_POST['phone'];
+
+    $password = $_POST['password'];
+
+    $Confirm_password = $_POST['confirm password'];
+
+    $sql = "INSERT INTO `mainContent`(`fname`, `lname`, `phone`, `email`, `password`, `confirm_password`) VALUES ('$fname','$lname','$phone','$email','$password', $confirm_password)";
+
+    $result = $conn->query($sql);
+
+    if ($result == TRUE) {
+
+      echo "New record created successfully.";
+
+    }else{
+
+      echo "Error:". $sql . "<br>". $conn->error;
+
+    } 
+
+    $conn->close(); 
+
+  }
+
     //Delete crud
-    public function deleteRecord($id)
-    {
-        $query = "DELETE FROM mainContent WHERE id = '$id'";
-        $sql = $this->connection->query($query);
-        if ($sql == true) {
-            header("Location:index.php?msg3=delete");
-        } else {
-            echo "</p> could not delete the record</P>";
-        }
-    }
-    //Update crud
-    public function update_record($postData)
-    {
-        $fname = $this->connection->real_escape_string($_POST['fname']);
-        $lname = $this->connection->real_escape_string($_POST['lname']);
-        $phone = $this->connection->real_escape_string($_POST['phone']);
-        $password = $this->connection->real_escape_string($_POST['password']);
-        $id = $this->connection->real_escape_string($_POST['id']);
+    $sql = "SELECT id, fname, lname, joinDate FROM mainContent";
+    $result = $conn->query($sql);
 
-        if (!empty($id) && !empty($postData)) {
-            $query = "UPDATE mainContent SET fname = '$fname', lname = '$lname', phone = '$phone', password= '$password' WHERE id = '$id'";
-            $sql = $this->connection->query($query);
+    if ($result->num_rows > 0) {
+        // output data of each row
+
+        while($row =  $result->fetch_assoc()) {
+            echo 
+                "<div class='row'>" . 
+                $row["id"]. ": " . 
+                $row["first name"] . " " . 
+                $row["last name"]. " " . 
+                $row["phone"]. " " . 
+                $row["email"]. " " .
+                $row["password"]. " " .
+                $row["confirm password"]. " " .
+                "<div class='deletePerson'>
+                    <form action='delete.php' method='POST'>
+                        <button type='submit'>Delete</button>
+                    </form>
+                </div>" . " " . 
+                "<div class='editMember'><a href='#'>Edit</a></div>" . 
+                "<br></div>";
         }
-        if ($sql == true) {
-            header("location:index.php?msg1=update");
-        } else {
-            echo "<p> Update failed</P>";
-        }
+
+    } else {
+        echo "0 results";
     }
-}
+
+    $conn->close();
+
+   $sql= "DELETE FROM mainContent WHERE id='".$_GET['id']."' ";
+   if($conn->query($sql) == TRUE){
+        header('Location:index.php');
+   }else {
+    echo "Error, record not deleted" .$conn->error;
+   }
+   $conn->close();
+
+
+
+?>
