@@ -1,0 +1,36 @@
+
+
+
+h1{
+    color:blue;
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+}
+h2{
+    display: flex;
+    justify-content: center;
+    color: blue;
+}
+body{
+    margin-top: 10%;
+    background-color: #EA2027;
+}
+.label-form-label{
+    color: blue;
+}
+
+.col-align-self-center{
+    height: 300px;
+    width: 400px;
+}
+
+
+
+
+
+
+
+
+
+

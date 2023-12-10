@@ -1,0 +1,30 @@
+/* main content*/
+body{
+    background-image: url(../image/format-arw-PXjQaGxi4JA-unsplash.jpg);
+    
+}
+h1{
+    display:flex;
+    justify-content: center;
+    color: blue;
+}
+h2{
+    color: blue;
+    margin-top: 10%;
+}
+h3{
+    margin-top:10% ;
+    display: flex;
+
+    color: blue;
+}
+/*img*/
+.container{
+    display: flex;
+    justify-content:center;
+    height: 640px;
+    width: 853px;
+}
+
+
+
